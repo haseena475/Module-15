@@ -19,11 +19,51 @@ To write a Python program to build a heap tree using appropriate Python package 
 ## PROGRAM:
 
 ```
-WRITE YOUR CODE
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def isLeaf(node):
+    return node.left is None and node.right is None
+ 
+def process(op, x, y):
+    if op == '+':
+        return x + y
+    if op == '-':
+        return x - y
+    if op == '*':
+        return x * y
+    if op == '/':
+        return x / y
+ 
+def evaluate(root):
+    
+    if root is None:
+        return None
+        
+    if isLeaf(root):
+        return float(root.val)
+        
+    x=evaluate(root.left)
+    y=evaluate(root.right)
+    return (process(root.val,x,y))
+    
+    
+root=Node('*')
+root.left=Node('+')
+root.right=Node('+')
+root.left.left=Node(7)
+root.left.right=Node(6)
+root.right.right=Node(6)
+root.right.left=Node(2)
+
+print("The value of the expression tree is",evaluate(root))
 ```
 
 ## OUTPUT
-```
-```
+<img width="1036" height="159" alt="image" src="https://github.com/user-attachments/assets/ab18818c-bf3c-4111-a9c4-37f00354fe71" />
 
 ## RESULT
+Thus the python program was initialised and executed successfully.
